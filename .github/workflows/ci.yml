@@ -1,0 +1,26 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Demo
+        run: python3 src/rea_rebuild_gate.py demo
+      - name: Check percent_rule
+        run: >
+          python3 src/rea_rebuild_gate.py check
+          --evidence examples/percent_rule/evidence.json
+          --evals examples/percent_rule/evals.json
+          --impl examples/percent_rule/rebuild.py
+      - name: Check speed_ramp
+        run: >
+          python3 src/rea_rebuild_gate.py check
+          --evidence examples/speed_ramp/evidence.json
+          --evals examples/speed_ramp/evals.json
+          --impl examples/speed_ramp/rebuild.py

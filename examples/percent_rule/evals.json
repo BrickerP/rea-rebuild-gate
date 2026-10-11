@@ -1,0 +1,10 @@
+[
+  {"id": "add_200_10", "description": "200 + 10% → percent value 20", "input": {"op": "+", "previous": 200, "current": 10}, "expect": 20.0},
+  {"id": "sub_50_10", "description": "50 - 10% → percent value 5", "input": {"op": "-", "previous": 50, "current": 10}, "expect": 5.0},
+  {"id": "add_0_10", "description": "0 + 10% → 0", "input": {"op": "+", "previous": 0, "current": 10}, "expect": 0.0},
+  {"id": "add_100_0", "description": "100 + 0% → 0", "input": {"op": "+", "previous": 100, "current": 0}, "expect": 0.0},
+  {"id": "mul_200_10", "description": "200 * 10% → 0.1", "input": {"op": "*", "previous": 200, "current": 10}, "expect": 0.1},
+  {"id": "div_200_10", "description": "200 / 10% → 0.1", "input": {"op": "/", "previous": 200, "current": 10}, "expect": 0.1},
+  {"id": "mul_50_25", "description": "50 * 25% → 0.25", "input": {"op": "*", "previous": 50, "current": 25}, "expect": 0.25},
+  {"id": "div_100_50", "description": "100 / 50% → 0.5", "input": {"op": "/", "previous": 100, "current": 50}, "expect": 0.5}
+]

@@ -1,0 +1,38 @@
+name: "REA Rebuild Gate"
+description: "Fail PRs when REA-style evidence is weak or the rebuild fails behavior evals."
+author: "BrickerP"
+branding:
+  icon: "shield"
+  color: "blue"
+inputs:
+  evidence:
+    description: "Path to evidence JSON (rea-rebuild-gate/v1)"
+    required: false
+    default: "evidence.json"
+  evals:
+    description: "Path to behavior evals JSON"
+    required: false
+    default: "evals.json"
+  impl:
+    description: "Path to Python rebuild module exposing apply(**input) or run(input)"
+    required: false
+    default: "rebuild.py"
+  min_confidence:
+    description: "Minimum claim confidence in [0,1]"
+    required: false
+    default: "0.8"
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      env:
+        EVIDENCE: ${{ inputs.evidence }}
+        EVALS: ${{ inputs.evals }}
+        IMPL: ${{ inputs.impl }}
+        MIN_CONF: ${{ inputs.min_confidence }}
+      run: >
+        python3 "${{ github.action_path }}/src/rea_rebuild_gate.py" check
+        --evidence "$EVIDENCE"
+        --evals "$EVALS"
+        --impl "$IMPL"
+        --min-confidence "$MIN_CONF"

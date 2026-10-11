@@ -1,0 +1,23 @@
+{
+  "schema": "rea-rebuild-gate/v1",
+  "artifact": {
+    "name": "synthetic-speed-ramp",
+    "digest": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+    "kind": "synthetic"
+  },
+  "provider": {
+    "id": "synthetic",
+    "version": "practice-1.0"
+  },
+  "recovered_at": "2026-10-11T11:00:00Z",
+  "claims": [
+    {
+      "id": "speed-curve",
+      "statement": "Start SPEED=6; each tick add ACCELERATION=0.001 while below MAX_SPEED=13; clamp at 13",
+      "confidence": 0.94,
+      "authority": "observed",
+      "limitations": ["Teaching fixture inspired by publicly documented endless-runner speed curves"],
+      "covers_eval": ["ticks_0", "ticks_4000", "ticks_10000"]
+    }
+  ]
+}

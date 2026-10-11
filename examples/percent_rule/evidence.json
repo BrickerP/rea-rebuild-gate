@@ -1,0 +1,31 @@
+{
+  "schema": "rea-rebuild-gate/v1",
+  "artifact": {
+    "name": "synthetic-percent-calculator",
+    "digest": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+    "kind": "synthetic"
+  },
+  "provider": {
+    "id": "synthetic",
+    "version": "practice-1.0"
+  },
+  "recovered_at": "2026-10-11T11:00:00Z",
+  "claims": [
+    {
+      "id": "add-sub-percent",
+      "statement": "After + or -, percent value = current * previous / 100",
+      "confidence": 0.95,
+      "authority": "observed",
+      "limitations": ["Teaching fixture; not a claim about any commercial binary"],
+      "covers_eval": ["add_200_10", "sub_50_10", "add_0_10", "add_100_0"]
+    },
+    {
+      "id": "mul-div-percent",
+      "statement": "After * or /, percent value = current / 100",
+      "confidence": 0.93,
+      "authority": "observed",
+      "limitations": ["Teaching fixture; synthetic operator ids"],
+      "covers_eval": ["mul_200_10", "div_200_10", "mul_50_25", "div_100_50"]
+    }
+  ]
+}

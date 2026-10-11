@@ -1,0 +1,5 @@
+[
+  {"id": "ticks_0", "description": "0 ticks → 6.0", "input": {"ticks": 0}, "expect": 6.0},
+  {"id": "ticks_4000", "description": "4000 ticks → 10.0", "input": {"ticks": 4000}, "expect": 10.0},
+  {"id": "ticks_10000", "description": "10000 ticks → 13.0 (clamped)", "input": {"ticks": 10000}, "expect": 13.0}
+]
