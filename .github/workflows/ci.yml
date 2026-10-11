@@ -3,24 +3,35 @@ on:
   push:
     branches: [main]
   pull_request:
+permissions:
+  contents: read
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.9", "3.12"]
+    name: test (Python ${{ matrix.python-version }})
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Unit tests
-        run: python3 -m unittest discover -s tests -v
+        run: python -m unittest discover -s tests -v
       - name: Demo
-        run: python3 src/rea_rebuild_gate.py demo
+        run: python src/rea_rebuild_gate.py demo
       - name: Check percent_rule
         run: >
-          python3 src/rea_rebuild_gate.py check
+          python src/rea_rebuild_gate.py check
           --evidence examples/percent_rule/evidence.json
           --evals examples/percent_rule/evals.json
           --impl examples/percent_rule/rebuild.py
       - name: Check speed_ramp
         run: >
-          python3 src/rea_rebuild_gate.py check
+          python src/rea_rebuild_gate.py check
           --evidence examples/speed_ramp/evidence.json
           --evals examples/speed_ramp/evals.json
           --impl examples/speed_ramp/rebuild.py
