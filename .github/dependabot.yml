@@ -1,0 +1,8 @@
+# Bump actions/checkout and actions/setup-python so @v1 consumers
+# do not stay pinned to stale action majors.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
