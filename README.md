@@ -4,6 +4,8 @@
 
 **A GitHub Action / CLI that fails a PR when REA-style rebuild evidence is weak — or the rebuild fails its behavior evals.**
 
+> Looking for the end-to-end product (traces → recover → rebuild → HTML report)? Use **[rea-workbench](https://github.com/BrickerP/rea-workbench)**. This repo is the gate library it consumes.
+
 [REA](https://rea.tools/) (Reverse Engineer Anything) helps coding agents recover how software works. Agents then rewrite. A demo that “runs” is not production. This gate sits in the middle: **evidence confidence + claim→eval coverage + behavior tests** before merge.
 
 ## Result (bundled demos)
